@@ -1,0 +1,44 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<div class="container py-5 bg-light mb-5 px-5 ">
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">HIRED APPLICATION LIST</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="{% url 'main:company' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Hired Application List</li>
+                        </ol>
+                        {% if applications %}
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Job</th>
+                                            <th>Experience</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for i in applications %}
+                                        <tr>
+                                            <td>{{i.candidate.first_name}} {{i.candidate.last_name}}</td>
+                                            <td>{{i.job.job_name}}</td>
+                                            <td>{{i.candidate.experience}}</td>
+                                            <td><a href="{% url 'main:company_application_detail' i.id %}" class="btn btn-primary py-2 px-4 me-5">View </a> <span class="badge bg-success">{{i.status.title}}</span></td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="card-body text-center">
+                            <p class="text-muted fs-2">No applications hired yet</p>
+                        </div>
+                        {% endif %}
+                    </div>
+
+</div>
+{% endblock %}

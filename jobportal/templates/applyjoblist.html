@@ -1,0 +1,42 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+                    <div class="container px-4">
+                        <h1 class="mt-4">JOB APPLY LIST</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="{% url 'main:company' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Job Apply List</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Job Name</th>
+                                            <th>Candidate Name</th>
+                                            <th>Experience</th>
+                                            <th>Location</th>
+                                            <th>Min Salary</th>
+                                            <th>Max Salary</th>
+                                            <th>Contact</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for i in joblist %}
+                                        <tr>
+                                            <td>{{i.job.job_name}}</td>
+                                            <td>{{i.candidate.first_name}}  {{i.candidate.last_name}}</td>
+                                            <td>{{i.experience}}</td>
+                                            <td>{{i.candidate.city}}</td>
+                                            <td>{{i.min_salary}}</td>
+                                            <td>{{i.max_salary}}</td>
+                                            <td>{{i.candidate.contact}}</td>
+                                        </tr>
+                                      {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+{% endblock %}

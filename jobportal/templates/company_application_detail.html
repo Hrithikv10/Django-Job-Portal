@@ -1,0 +1,60 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<div class="container-fluid px-4 mx-5 my-5 rounded-5 shadow w-75 bg-light py-5">
+    <h1 class="text-decoration-underline mb-5 text-center">Application Details</h1>
+
+    <h3 class="mb-4  text-decoration-underline">Candidate</h3>
+    <p class="fs-5 text-uppercase fw-bold font-monospace">{{ application.candidate.first_name }} {{ application.candidate.last_name }}</p>
+    <p class="fs-5">Candidate Summary: {{ application.candidate.profile_summary }}</p>
+    <p class="fs-5">Email: {{ application.candidate.user_id.email }}</p>
+    <p class="fs-5">Phone: {{ application.candidate.contact }}</p>
+    <p class="fs-5">Experience: {{ application.candidate.experience|title }}</p>
+    <p class="fs-5">Location: {{ application.candidate.city }}</p>
+
+    <hr>
+
+    <h5 class="mb-3 text-decoration-underline">Job</h5>
+    <p class="fs-5">Role : {{ application.job.job_name }}</p>
+    <p class="fs-5">Company : {{ application.job.company_name }}</p>
+    <p class="fs-5">Location : {{ application.job.location }}</p>
+    <p class="fs-5">Salary Package : {{ application.job.salary_package }}</p>
+
+    <hr>
+
+    <h5 class="mb-3 text-decoration-underline">Resume</h5>
+    <a href="{{ application.resume.url }}" target="_blank" class="btn btn-success">
+        Download Resume
+    </a>
+
+    <hr>
+
+<h1 class="mb-4 text-center">Application Status</h1>
+<p class="fs-5 fw-bold text-uppercase"> Status: {{ application.status }}</p>
+{% if application.status == 'applied' %}
+    <a href="{% url 'main:update_application_status' application.id 'shortlisted' %}"
+       class="btn btn-info me-3 py-2 px-4 ">
+       Shortlist
+    </a>
+
+    <a href="{% url 'main:update_application_status' application.id 'rejected' %}"
+       class="btn btn-danger py-2 px-4">
+       Reject
+    </a>
+
+{% elif application.status == 'shortlisted' %}
+    <a href="{% url 'main:update_application_status' application.id 'hired' %}"
+       class="btn btn-success me-3 py-2 px-4">
+       Hire
+    </a>
+
+    <a href="{% url 'main:update_application_status' application.id 'rejected' %}"
+       class="btn btn-danger py-2 px-4">
+       Reject
+    </a>
+{% endif %}
+
+</div>
+
+
+{% endblock %}

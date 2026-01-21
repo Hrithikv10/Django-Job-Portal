@@ -1,0 +1,411 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Start Home -->
+<section class="bg-home" id="home" style="background: url('{% static 'images/bg-home.jpg' %}') center center;">
+<div class="bg-overlay"></div>
+<div class="home-center">
+<div class="home-desc-center">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <div class="title-heading text-center text-white">
+                <h6 class="small-title text-uppercase text-light mb-3">Find jobs, and enrich your applications.</h6>
+                <h1 class="heading fw-bold mb-4">The Easiest Way to Get Your New Job</h1>
+            </div>
+        </div>
+    </div>
+    <div class="home-form-position">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="home-registration-form p-4 mb-3">
+                    <form  action="{% url 'main:search' %}">
+                        <div class="row">
+                            <div class="col-lg-9 col-md-6">
+                                <div class="registration-form-box">
+                                    <i class="fa fa-briefcase"></i>
+                                    <input type="text" name="s" class="form-control rounded registration-input-box" placeholder="Search Job by Job Title, Company Name, Location...">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="registration-form-box">
+                                    <input type="submit"  class=" btn btn-primary btn-block" value="Submit">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+<!-- end home -->
+
+<!-- popular category start -->
+<section class="section">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="section-title text-center mb-4 pb-2">
+                <h4 class="title title-line pb-5">Popular Category</h4>
+                <p class="text-muted para-desc mx-auto mb-1">Post a job to tell us about your project. We'll quickly match you with the right freelancers.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-3 col-md-6 mt-4 pt-2">
+            <a href="{% url 'main:category' 'software_development' %}">
+                <div class="popu-category-box bg-light rounded text-center p-4">
+                    <div class="popu-category-icon mb-3">
+                        <i class="mdi mdi-account d-inline-block rounded-pill h3 text-primary"></i>
+                    </div>
+                    <div class="popu-category-content">
+                        <h5 class="mb-2 text-dark title">Software Development</h5>
+                        <p class="text-success mb-0 rounded">{{ category_counts.software_development|default:0 }} Jobs</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mt-4 pt-2">
+            <a href="{% url 'main:category' 'technology_it' %}">
+                <div class="popu-category-box bg-light rounded text-center p-4">
+                    <div class="popu-category-icon mb-3">
+                        <i class="mdi mdi-desktop-classic d-inline-block rounded-pill h3 text-primary"></i>
+                    </div>
+                    <div class="popu-category-content">
+                        <h5 class="mb-2 text-dark title">Technology & IT</h5>
+                        <p class="text-success mb-0 rounded">{{ category_counts.technology_it|default:0 }}  Jobs</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mt-4 pt-2">
+            <a href="{% url 'main:category' 'data_analytics' %}">
+                <div class="popu-category-box bg-light rounded text-center p-4">
+                    <div class="popu-category-icon mb-3">
+                        <i class="mdi mdi-database d-inline-block rounded-pill h3 text-primary"></i>
+                    </div>
+                    <div class="popu-category-content">
+                        <h5 class="mb-2 text-dark title">Data & Analytics</h5>
+                        <p class="text-success mb-0 rounded">{{ category_counts.data_analytics|default:0 }}  Jobs</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mt-4 pt-2">
+            <a href="{% url 'main:category' 'accounting_finance' %}">
+                <div class="popu-category-box bg-light rounded text-center p-4">
+                    <div class="popu-category-icon mb-3">
+                        <i class="mdi mdi-auto-fix d-inline-block rounded-pill h3 text-primary"></i>
+                    </div>
+                    <div class="popu-category-content">
+                        <h5 class="mb-2 text-dark title">Accounting / Finance</h5>
+                        <p class="text-success mb-0 rounded">{{ category_counts.accounting_finance|default:0 }}  Jobs</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mt-4 pt-2">
+            <a href="{% url 'main:category' 'sales_marketing' %}">
+                <div class="popu-category-box bg-light rounded text-center p-4">
+                    <div class="popu-category-icon mb-3">
+                        <i class="mdi mdi-office-building d-inline-block rounded-pill h3 text-primary"></i>
+                    </div>
+                    <div class="popu-category-content">
+                        <h5 class="mb-2 text-dark title">Sales & Marketing</h5>
+                        <p class="text-success mb-0 rounded">{{ category_counts.sales_marketing|default:0 }}  Jobs</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mt-4 pt-2">
+            <a href="{% url 'main:category' 'customer_support' %}">
+                <div class="popu-category-box bg-light rounded text-center p-4">
+                    <div class="popu-category-icon mb-3">
+                        <i class="mdi mdi-telegram d-inline-block rounded-pill h3 text-primary"></i>
+                    </div>
+                    <div class="popu-category-content">
+                        <h5 class="mb-2 text-dark title">Customer Support</h5>
+                        <p class="text-success mb-0 rounded">{{ category_counts.customer_support|default:0 }}  Jobs</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mt-4 pt-2">
+            <a href="{% url 'main:category' 'ux_design' %}">
+                <div class="popu-category-box bg-light rounded text-center p-4">
+                    <div class="popu-category-icon mb-3">
+                        <i class="mdi mdi-television-classic d-inline-block rounded-pill h3 text-primary"></i>
+                    </div>
+                    <div class="popu-category-content">
+                        <h5 class="mb-2 text-dark title">UI / UX & Design</h5>
+                        <p class="text-success mb-0 rounded">{{ category_counts.ux_design|default:0 }}  Jobs</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mt-4 pt-2">
+            <a href="{% url 'main:category' 'human_resources' %}">
+                <div class="popu-category-box bg-light rounded text-center p-4">
+                    <div class="popu-category-icon mb-3">
+                        <i class="mdi mdi-human d-inline-block rounded-pill h3 text-primary"></i>
+                    </div>
+                    <div class="popu-category-content">
+                        <h5 class="mb-2 text-dark title">Human Resource</h5>
+                        <p class="text-success mb-0 rounded">{{ category_counts.human_resources|default:0 }}  Jobs</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+</section>
+<!-- popular category end -->
+
+<!-- all jobs start -->
+<section class="section bg-light" id="jobs">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="section-title text-center mb-4 pb-2">
+                <h4 class="title title-line pb-5">Find Your Jobs</h4>
+                <p class="text-muted para-desc mx-auto mb-1">Explore job opportunities that align with your skills, experience, and future career plans.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-9 text-center mt-4 pt-2">
+            <ul class="nav nav-pills nav nav-pills bg-white rounded nav-justified flex-column flex-sm-row" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link rounded {% if not selected_type %}active{% endif %} "  data-toggle="pill" href="{% url 'main:candidate' %}#jobs" >Recent Jobs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded  {% if selected_type == 'remote' %}active{% endif %}" data-toggle="pill" href="{% url 'main:candidate' %}?type=remote#jobs" >Remote</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded {% if selected_type == 'part time' %}active{% endif %}"  data-toggle="pill" href="{% url 'main:candidate' %}?type=part time#jobs" >Part Time</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded  {% if selected_type == 'full time' %}active{% endif %}"  data-toggle="pill" href="{% url 'main:candidate' %}?type=full time#jobs" >Full Time</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="tab-content mt-2" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="recent-job" role="tabpanel" aria-labelledby="recent-job-tab">
+                    <div class="row">
+                         {% if recent_jobs  %}
+                        {% for i in recent_jobs  %}
+                        <div class="col-lg-12">
+                            <div class="job-box bg-white overflow-hidden border rounded mt-4 position-relative overflow-hidden">
+                                <div class="p-4">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-2">
+                                            <div class="mo-mb-2">
+                                                <img src="{{i.logo.url}}" alt="" class="img-fluid mx-auto d-block">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div>
+                                                <h5 class="f-18"><a href="{% url 'main:jobdetail' i.id %}" class="text-dark">{{i.job_name}}</a></h5>
+                                                <p class="text-muted mb-0">{{i.company_name}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div>
+                                                <p class="text-muted mb-0"><i class="mdi mdi-map-marker text-primary me-2"></i>{{i.location}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div>
+                                                <p class="text-muted mb-0 mo-mb-2"><span class="text-primary"></span>{{i.salary_package}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div>
+                                                <p class="text-muted mb-0">{{i.job_type|title}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-3 bg-light">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div>
+                                                <p class="text-muted mb-0 mo-mb-2"><span class="text-dark">Experience :</span>{{i.experience}} years</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div>
+                                                <a href="{% url 'main:jobdetail' i.id  %}" class="text-primary">More Details <i class="mdi mdi-chevron-double-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        </div>
+                    </div>
+                    <!-- end row -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>
+<!-- end containar -->
+</section>
+<!-- all jobs end -->
+
+<!-- How it Work start -->
+<section class="section">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="section-title text-center mb-4 pb-2">
+                <h4 class="title title-line pb-5">How It Work</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mt-4 pt-2">
+            <div class="how-it-work-box bg-light p-4 text-center rounded shadow">
+                <div class="how-it-work-img position-relative rounded-pill mb-3">
+                    <img src="{% static 'images/how-it-work/img-1.png' %}" alt="" class="mx-auto d-block" height="50">
+                </div>
+                <div>
+                    <h5>Register an account</h5>
+                    <a href="{% url 'main:signup' %}" class="text-primary">Register Now <i class="mdi mdi-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-4 pt-2">
+            <div class="how-it-work-box bg-light p-4 text-center rounded shadow">
+                <div class="how-it-work-img position-relative rounded-pill mb-3">
+                    <img src="{% static 'images/how-it-work/img-2.png' %}" alt="" class="mx-auto d-block" height="50">
+                </div>
+                <div>
+                    <h5>Search your job</h5>
+
+                    <a href="{% url 'main:search' %}" class="text-primary">Search Job<i class="mdi mdi-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-4 pt-2">
+            <div class="how-it-work-box bg-light p-4 text-center rounded shadow">
+                <div class="how-it-work-img position-relative rounded-pill mb-3">
+                    <img src="{% static 'images/how-it-work/img-3.png' %}" alt="" class="mx-auto d-block" height="50">
+                </div>
+                <div>
+                    <h5>Apply for job</h5>
+                    <a href="{% url 'main:canjoblist' %}" class="text-primary">Apply Job <i class="mdi mdi-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<!-- How it Work end -->
+
+<!-- counter start -->
+<section class="section bg-counter position-relative" style="background: url('{% static 'images/bg-counters.jpg' %}') center center;">
+<div class="bg-overlay bg-overlay-gradient"></div>
+<div class="container">
+    <div class="row" id="counter">
+        <div class="col-md-3 col-6">
+            <div class="home-counter pt-4 pb-4">
+                <div class="float-start counter-icon me-3">
+                    <i class="mdi mdi-bank h1 text-white"></i>
+                </div>
+                <div class="counter-content overflow-hidden">
+                    <h1 class="counter-value text-white mb-1" data-count="{{company_count}}">0</h1>
+                    <p class="counter-name text-white text-uppercase mb-0">Companies</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-6">
+            <div class="home-counter pt-4 pb-4">
+                <div class="float-start counter-icon me-3">
+                    <i class="mdi mdi-file-document-box h1 text-white"></i>
+                </div>
+                <div class="counter-content overflow-hidden">
+                    <h1 class="counter-value text-white mb-1" data-count="{{application_count}}">0</h1>
+                    <p class="counter-name text-white text-uppercase mb-0">Applications</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-6">
+            <div class="home-counter pt-4 pb-4">
+                <div class="float-start counter-icon me-3">
+                    <i class="mdi mdi-calendar-multiple-check h1 text-white"></i>
+                </div>
+                <div class="counter-content overflow-hidden">
+                    <h1 class="counter-value text-white mb-1" data-count="{{job_count}}">0</h1>
+                    <p class="counter-name text-white text-uppercase mb-0">Job Posted</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="home-counter pt-4 pb-4">
+                <div class="float-start counter-icon me-3">
+                    <i class="mdi mdi-account-multiple-plus h1 text-white"></i>
+                </div>
+                <div class="counter-content overflow-hidden">
+                    <h1 class="counter-value text-white mb-1" data-count="{{member_count}}">0</h1>
+                    <p class="counter-name text-white text-uppercase mb-0">Member</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</section>
+<!-- counter end -->
+
+
+<!-- subscribe start -->
+<section class="section" id="subscribe">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-5">
+            <div class="float-start position-relative notification-icon me-2">
+                <i class="mdi mdi-bell-outline text-primary"></i>
+                <span class="badge badge-pill badge-danger">1</span>
+            </div>
+            <h5 class="mt-2 mb-0">Your Job Notification</h5>
+        </div>
+        <div class="col-lg-8 col-md-7 mt-4 mt-sm-0">
+            <form method="post" action="{% url 'main:subscribe' %}">
+                {% csrf_token %}
+                <div class="form-group mb-0">
+                    <div class="input-group mb-0">
+                        <input name="email" id="email" type="email" class="form-control" placeholder="Your email :" required="">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary submitBnt" type="submit">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</section>
+<!-- subscribe end -->
+
+{% endblock %}

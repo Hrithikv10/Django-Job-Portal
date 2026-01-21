@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+ <!-- Start home -->
+    <section class="bg-half page-next-level">
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="text-center text-white">
+                        <h4 class="text-uppercase title mb-4">CANDIDATE PROFILE</h4>
+                        <ul class="page-next d-inline-block mb-0">
+                            <li><a href="{% url 'main:home'%}" class="text-uppercase font-weight-bold">Home</a></li>
+                            <li>
+                                <span class="text-uppercase text-white font-weight-bold"> Profile</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end home -->
+
+<div class="container mt-5 mb-5">
+
+  <!-- Profile Card -->
+  <div class="card shadow-lg rounded-5 border-0 bg-light">
+    <div class="card-body p-4">
+
+      <!-- Top Section -->
+      <div class="row align-items-center mb-4">
+        <div class="col-md-2 text-center">
+          {% if candidate.profile_picture %}
+            <img src="{{ candidate.profile_picture.url }}"
+                 class="rounded-circle img-fluid"
+                 style="width:120px;height:120px;object-fit:cover;">
+          {% endif %}
+        </div>
+
+        <div class="col-md-7">
+          <h3 class="mb-1">{{ candidate.first_name }} {{ candidate.last_name }}</h3>
+          <p class="text-muted mb-1">{{ email }}</p>
+          <span class="badge bg-primary">{{ candidate.job_category }}</span>
+        </div>
+
+        <div class="col-md-3 text-end">
+          <a href="{% url 'main:editcanprofile' %}"
+             class="btn btn-outline-primary">
+            ✏️ Update Profile
+          </a>
+        </div>
+      </div>
+
+      <hr class="mb-3">
+
+      <!-- Basic Info -->
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <p><strong>Contact : </strong> {{ candidate.contact }}</p>
+            {% if candidate.city and candidate.state %}
+          <p><strong>Location : </strong> {{ candidate.city }} {{ candidate.state }}</p>
+            {% else%}
+            <p><strong>Location : </strong></p>
+            {% endif %}
+          <p><strong>Gender : </strong> {{ candidate.gender }}</p>
+        </div>
+        <div class="col-md-6">
+          <p><strong>Experience : </strong> {{ candidate.experience }}</p>
+          <p><strong>Job Type : </strong> {{ candidate.job_type|cut:"_"|title }}
+</p>
+          <p><strong>Shift : </strong> {{ candidate.shift }}</p>
+        </div>
+      </div>
+
+      <!-- Salary -->
+      <div class="mb-4">
+        <h5>Expected Salary</h5>
+        <p>₹ {{ candidate.min_salary }} – ₹ {{ candidate.max_salary }}</p>
+      </div>
+
+      <!-- Profile Summary -->
+      <div class="mb-4">
+        <h5>Profile Summary</h5>
+        <p class="text-muted">{{ candidate.profile_summary }}</p>
+      </div>
+
+      <!-- Skills -->
+      <h5>Skills</h5>
+
+{% if skills %}
+  {% for i in skills %}
+    <span class="badge bg-secondary me-1 mb-3">{{i}}</span>
+  {% endfor %}
+{% else %}
+  <p class="text-muted mb-3">No skills added</p>
+{% endif %}
+
+      <!-- Website -->
+      {% if candidate.website %}
+      <div class="mb-2">
+        <h5>Portfolio / Website</h5>
+        <a href="{{ candidate.website }}" target="_blank">
+          {{ candidate.website }}
+        </a>
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

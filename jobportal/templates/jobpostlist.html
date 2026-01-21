@@ -1,0 +1,46 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<div class="container py-5 bg-light mb-5 px-5 ">
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">JOB POST LIST</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="{% url 'main:company' %}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Job Post List</li>
+                        </ol>
+                        <div class="card mb-4">
+                            {% if joblist %}
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Job Name</th>
+                                            <th>Company Name</th>
+                                            <th>Location</th>
+                                            <th>Company Website</th>
+                                            <th>Experience</th>
+                                            <th>Salary Package</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for i in joblist %}
+                                        <tr>
+                                            <td>{{i.job_name}}</td>
+                                            <td>{{i.company_name}}</td>
+                                            <td>{{i.location}}</td>
+                                            <td> <a href="{{ i.company_website }}" target="_blank" class="text-primary">{{ i.company_website }}</a></td>
+                                            <td>{{i.experience}}</td>
+                                            <td>{{i.salary_package}}</td>
+                                        </tr>
+                                     {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            {% else %}
+                            <div class="text-center fs-3 p-4 text-danger font-monospace">No jobs posted yet</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+</div>
+{% endblock %}

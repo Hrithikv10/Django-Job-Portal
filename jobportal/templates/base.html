@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jobya - JobPortal Website</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <!--Material Icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/materialdesignicons.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fontawesome.css' %}" />
+    <!-- selectize css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/selectize.css' %}" />
+    <!--Slider-->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/owl.theme.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/owl.transitions.css' %}" />
+    <!-- Custom  Css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.min.css' %}" />
+
+
+</head>
+{% if messages %}
+<div class="container mt-4" style="z-index: 1050; position: relative;">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show bg-white fs-5" role="alert">
+            {{ message }}
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<body>
+
+    <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Loader -->
+
+    <!-- Navigation Bar-->
+    <header id="topnav" class="defaultscroll scroll-active">
+        <!-- Tagline STart -->
+        <div class="tagline">
+            <div class="container">
+                <div class="float-start">
+                    <div class="phone">
+                        <i class="mdi mdi-phone-classic"></i> +91 8848809628
+                    </div>
+                    <div class="email">
+                        <a href="#">
+                            <i class="mdi mdi-email"></i> jobyaoffical@mail.com
+                        </a>
+                    </div>
+                </div>
+                <div class="float-end">
+                    <ul class="topbar-list list-unstyled d-flex navigation-menu text-white" style="margin: 11px 0px;">
+                        {% if user.is_authenticated and user.role == 'candidate' %}
+                        <li class="list-inline-item has-submenu pt-1 "><i class="mdi mdi-account me-1"></i>{{ user.first_name }} {{ user.last_name }}
+                        <ul class="submenu ">
+                            <li><a href="{% url 'main:canprofile' %}">Profile</a></li>
+                            <li><a href="{% url 'main:logout' %}">Logout</a></li>
+                        </ul></li>
+                        {% else %}
+                        <li class="list-inline-item has-submenu"><i class="mdi mdi-account me-2"></i>Hi,Guest
+                        <ul class="submenu">
+                            <li><a href="{% url 'main:login' %}">Login</a></li>
+                            <li><a href="{% url 'main:signup' %}">Signup</a></li>
+
+                        </ul>
+                        </li>
+                        {% endif %}
+                        <li class="list-inline-item">
+                            <select id="select-lang" class="demo-default">
+                                <option value="">Language</option>
+                                <option value="4">English</option>
+                                <option value="1">Spanish</option>
+                                <option value="3">French</option>
+                                <option value="5">Hindi</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- Tagline End -->
+
+        <!-- Menu Start -->
+        <div class="container">
+            <!-- Logo container-->
+            <div>
+                <a href="{% url 'main:home' %}" class="logo">
+                    <img src="{% static 'images/logo-light.png' %}" alt="" class="logo-light" height="18" />
+                    <img src="{% static 'images/logo-dark.png' %}" alt="" class="logo-dark" height="18" />
+                </a>
+            </div>
+            <!-- End Logo container-->
+            <div class="menu-extras">
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
+
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu">
+                    {% if user.is_authenticated and user.role == 'candidate' %}
+                    <li><a href="{% url 'main:candidate' %}">Home</a></li>
+                    {% else %}
+                    <li><a href="{% url 'main:home' %}">Home</a></li>
+                    {% endif %}
+                    <li class="has-submenu">
+                        <a>Jobs</a><span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li><a href="{% url 'main:canjoblist' %}">Job List</a></li>
+                            <li><a href="{% url 'main:applied' %}">Applied Job</a></li>
+                            <li class="has-submenu"><a>Job Category</a><span class="menu-arrow"></span>
+                            <ul class="submenu">
+                                    <li><a href="{% url 'main:category' 'software_development' %}">Software Development</a></li>
+                                    <li><a href="{% url 'main:category' 'technology_it' %}">Technology & IT`</a></li>
+                                    <li><a href="{% url 'main:category' 'data_analytics' %}">Data & Analytics</a></li>
+                                    <li><a href="{% url 'main:category' 'accounting_finance' %}">Accounting / Finance</a></li>
+                                    <li><a href="{% url 'main:category' 'sales_marketing' %}">Sales & Marketing</a></li>
+                                    <li><a href="{% url 'main:category' 'customer_support' %}">Customer Support</a></li>
+                                    <li><a href="{% url 'main:category' 'ux_design' %}">UI / UX & Design</a></li>
+                                    <li><a href="{% url 'main:category' 'human_resources' %}">Human Resource</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    {% if user.is_authenticated and user.role == 'candidate' %}
+                    <li class="has-submenu">
+                        <a href="javascript:void(0)">Candidate</a><span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li><a href="{% url 'main:canprofile' %}">Profile</a></li>
+                            <li><a href="{% url 'main:logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                        {% else %}
+                         <li class="has-submenu">
+                        <a href="javascript:void(0)">Page</a><span class="menu-arrow"></span>
+                        <ul class="submenu">
+                            <li><a href="{% url 'main:login' %}">Login</a></li>
+                            <li><a href="{% url 'main:signup' %}">Signup</a></li>
+                            <li><a href="{% url 'main:forgotpassword' %}">Forgot Password</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a href="{% url 'main:contact' %}">contact</a>
+                    </li>
+                </ul><!--end navigation menu-->
+            </div><!--end navigation-->
+        </div><!--end container-->
+        <!--end end-->
+    </header><!--end header-->
+    <!-- Navbar End -->
+{% block content %}
+
+
+
+
+{% endblock %}
+
+    <!-- footer start -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
+                    <a href="javascript:void(0)"><img src="{% static 'images/logo-light.png' %}" height="20" alt=""></a>
+                    <p class="mt-4">Find jobs, and enrich your applications. The Easiest Way to Get Your New Job</p>
+                    <ul class="social-icon social list-inline mb-0">
+                        <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-google"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                </div>
+                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <p class="text-white mb-4 footer-list-title f-17">Business Hours</p>
+                    <ul class="list-unstyled text-foot mt-4 mb-0">
+                        <li>Monday - Friday : 9:00 to 17:00</li>
+                        <li class="mt-2">Saturday : 10:00 to 15:00</li>
+                        <li class="mt-2">Sunday : Day Off (Holiday)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+    <hr>
+    <footer class="footer footer-bar">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="">
+                        <p class="mb-0">© 2025 -2026 Jobya</p>
+                    </div>
+                </div>
+            </div>
+        </div><!--end container-->
+    </footer><!--end footer-->
+    <!-- Footer End -->
+
+    <!-- Back to top -->
+    <a href="#" class="back-to-top rounded text-center" id="back-to-top">
+        <i class="mdi mdi-chevron-up d-block"> </i>
+    </a>
+    <!-- Back to top -->
+
+    <!-- javascript -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+
+    <!-- selectize js -->
+    <script src="{% static 'js/selectize.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/counter.int.js' %}"></script>
+
+    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/home.js' %}"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
