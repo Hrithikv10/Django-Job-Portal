@@ -73,34 +73,35 @@ The project focuses on real-world recruitment workflows, secure authentication, 
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page](screenshots/home.png)
+![Home Page](jobportal/screenshots/home.png)
 
 ### Job List
-![Job List](screenshots/job_list.png)
+![Job List](jobportal/screenshots/job_list.png)
 
 ### Category-wise Job Listing
-![Category List Jobs](screenshots/category_list_jobs.png)
+![Category List Jobs](jobportal/screenshots/category_list_jobs.png)
 
 ### Job Search Results
-![Search Result](screenshots/search_result.png)
+![Search Result](jobportal/screenshots/search_result.png)
 
 ### Job Post Form (Company)
-![Job Post Form](screenshots/job_post_form.png)
+![Job Post Form](jobportal/screenshots/job_post_form.png)
 
 ### Posted Jobs List (Company)
-![Job Posted List](screenshots/job_posted_list.png)
+![Job Posted List](jobportal/screenshots/job_posted_list.png)
 
 ### Company Dashboard
-![Company Dashboard](screenshots/company_dashboard.png)
+![Company Dashboard](jobportal/screenshots/company_dashboard.png)
 
 ### Company Profile
-![Company Profile](screenshots/company_profile.png)
+![Company Profile](jobportal/screenshots/company_profile.png)
 
 ### Applied Candidates List
-![Applied Candidates](screenshots/job_applied_candidate_list.png)
+![Applied Candidates](jobportal/screenshots/job_applied_candidate_list.png)
 
 ### Candidate Applied Job
-![Applied Job](screenshots/applied_job.png)
+![Applied Job](jobportal/screenshots/applied_job.png)
 
 ### Candidate Profile
-![Candidate Profile](screenshots/candidate_profile.png)
+![Candidate Profile](jobportal/screenshots/candidate_profile.png)
+creenshots/candidate_profile.png)
