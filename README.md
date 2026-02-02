@@ -93,15 +93,9 @@ The project focuses on real-world recruitment workflows, secure authentication, 
 ### Company Dashboard
 ![Company Dashboard](jobportal/screenshots/company_dashboard.png)
 
-### Company Profile
-![Company Profile](jobportal/screenshots/company_profile.png)
-
 ### Applied Candidates List
 ![Applied Candidates](jobportal/screenshots/job_applied_candidate_list.png)
 
 ### Candidate Applied Job
 ![Applied Job](jobportal/screenshots/applied_job.png)
 
-### Candidate Profile
-![Candidate Profile](jobportal/screenshots/candidate_profile.png)
-creenshots/candidate_profile.png)
